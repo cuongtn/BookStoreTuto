@@ -1,0 +1,6 @@
+{
+  "BookstoreApplication":"examples.tutorial.bookstore.BookstoreApplication",
+  "Weather3Application":"examples.tutorial.weather3.Weather3Application",
+  "Weather8Application":"examples.tutorial.weather8.Weather8Application",
+  "Weather9Application":"examples.tutorial.weather9.Weather9Application"
+}

@@ -1,0 +1,37 @@
+{
+  "asset":{
+    "package":"examples.tutorial.bookstore.assets",
+    "scripts":[{
+        "id":"jquery",
+        "location":"CLASSPATH",
+        "src":"jquery-1.7.1.min.js"
+      },{
+        "depends":["jquery"],
+        "location":"CLASSPATH",
+        "src":"bookstore.js"
+      }],
+    "stylesheets":[{
+        "location":"CLASSPATH",
+        "src":"/examples/tutorial/assets/bootstrap.css"
+      }]
+  },
+  "binding":{
+    "bindings":[{
+        "implementation":"examples.tutorial.bookstore.GateInMetaProvider",
+        "value":"org.exoplatform.test.BookStoreServiceImpl"
+      },{
+        "implementation":"examples.tutorial.bookstore.GateInMetaProvider",
+        "value":"org.exoplatform.test.SimpleServiceImpl"
+      }]
+  },
+  "controller":{
+    "controllers":["examples.tutorial.bookstore.BookStorePorlet_"],
+    "default":null,
+    "escapeXML":null
+  },
+  "portlet":{},
+  "template":{
+    "package":"examples.tutorial.bookstore.templates",
+    "templates":["examples.tutorial.bookstore.templates.index"]
+  }
+}

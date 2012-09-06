@@ -1,0 +1,20 @@
+{
+  "asset":{
+    "package":"examples.tutorial.weather8.assets",
+    "scripts":[],
+    "stylesheets":[{
+        "location":"CLASSPATH",
+        "src":"/examples/tutorial/assets/bootstrap.css"
+      }]
+  },
+  "controller":{
+    "controllers":["examples.tutorial.weather8.Weather_"],
+    "default":null,
+    "escapeXML":null
+  },
+  "portlet":{},
+  "template":{
+    "package":"examples.tutorial.weather8.templates",
+    "templates":["examples.tutorial.weather8.templates.index"]
+  }
+}

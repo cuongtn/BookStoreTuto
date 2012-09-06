@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<portlet-app xmlns="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd"
+	version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd
+   http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd">
+
+	<portlet>
+		<portlet-name>BookStorePortlet</portlet-name>
+		<display-name xml:lang="EN">Juzu Type Safe Templating</display-name>
+		<portlet-class>examples.tutorial.bookstore.BookstorePortlet</portlet-class>
+		<init-param>
+			<name>juzu.run_mode</name>
+			<value>dev</value>
+		</init-param>
+		<init-param>
+			<name>juzu.src_path</name>
+			<value>/home/cuongtn/java/eXoProjects/juzu-training/tutorial-juzu/src/main/java</value>
+		</init-param>
+		<!-- <init-param>
+			<name>juzu.inject</name>
+			<value>weld</value>
+		</init-param> -->
+		
+		<supports>
+			<mime-type>text/html</mime-type>
+		</supports>
+		<portlet-info>
+			<title>Book Store </title>
+			<keywords>juzu,sample</keywords>
+		</portlet-info>
+	</portlet>
+	<portlet>
+		<portlet-name>Weather8Portlet</portlet-name>
+		<display-name xml:lang="EN">Juzu Styled</display-name>
+		<portlet-class>examples.tutorial.weather8.Weather8Portlet</portlet-class>
+		<init-param>
+			<name>juzu.run_mode</name>
+			<value>dev</value>
+		</init-param>
+		<init-param>
+			<name>juzu.src_path</name>
+			<value>/home/cuongtn/java/eXoProjects/tutorial-juzu/src/main/java</value>
+		</init-param>
+		<supports>
+			<mime-type>text/html</mime-type>
+		</supports>
+		<portlet-info>
+			<title>Weather 8</title>
+			<keywords>juzu,sample</keywords>
+		</portlet-info>
+	</portlet>
+	<portlet>
+		<portlet-name>Weather9Portlet</portlet-name>
+		<display-name xml:lang="EN">Juzu Ajaxified</display-name>
+		<portlet-class>examples.tutorial.weather9.Weather9Portlet</portlet-class>
+		<init-param>
+			<name>juzu.run_mode</name>
+			<value>dev</value>
+		</init-param>
+		<init-param>
+			<name>juzu.src_path</name>
+			<value>/home/cuongtn/java/eXoProjects/tutorial-juzu/src/main/java</value>
+		</init-param>
+		<supports>
+			<mime-type>text/html</mime-type>
+		</supports>
+		<portlet-info>
+			<title>Weather 9</title>
+			<keywords>juzu,sample</keywords>
+		</portlet-info>
+	</portlet>
+  
+</portlet-app>

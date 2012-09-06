@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.juzu</groupId>
+    <artifactId>juzu-doc-tutorial-parent</artifactId>
+    <version>0.5.1</version>
+  </parent>
+
+  <groupId>org.juzu</groupId>
+  <artifactId>BookStorePorlet</artifactId>
+  <version>0.5.1</version>
+
+  <name>Juzu Tutorial Examples</name>
+  <description>Various tutorial examples</description>
+
+  <dependencies>
+  	<dependency>
+    	<groupId>org.exoplatform.test</groupId>
+  		<artifactId>exo.platform.test.book-store</artifactId>
+  		<version>1.1-SNAPSHOT</version>
+  		<scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.juzu</groupId>
+      <artifactId>juzu-builder</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.juzu</groupId>
+      <artifactId>juzu-plugins-less</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.juzu</groupId>
+      <artifactId>juzu-plugins-portlet</artifactId>
+    </dependency>
+
+<!--
+    <dependency>
+      <groupId>org.exoplatform.kernel</groupId>
+      <artifactId>exo.kernel.commons</artifactId>
+      <version>2.3.7-GA</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.exoplatform.kernel</groupId>
+      <artifactId>exo.kernel.container</artifactId>
+      <version>2.3.7-GA</version>
+    </dependency>
+
+
+    <dependency>
+      <groupId>org.exoplatform.kernel</groupId>
+      <artifactId>exo.kernel.component.common</artifactId>
+      <version>2.3.7-GA</version>
+    </dependency>
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>1.2.14</version>
+    </dependency>
+    <dependency>
+      <groupId>picocontainer</groupId>
+      <artifactId>picocontainer</artifactId>
+      <version>1.1</version>
+    </dependency>
+-->
+    <dependency>
+            <groupId>org.exoplatform.jcr</groupId>
+            <artifactId>exo.jcr.component.core</artifactId>
+            <version>1.14.7-GA</version>
+		<scope>provided</scope>
+     </dependency>
+     <dependency>
+     	<groupId>org.exoplatform.jcr</groupId>
+     	<artifactId>exo.jcr.component.ext</artifactId>
+     	<version>1.14.0-CR2</version>
+     	<scope>provided</scope>
+     </dependency>
+<!--
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>1.8.0.10</version>
+        </dependency>
+-->
+  </dependencies>
+
+  <build>
+    <finalName>juzu-booking</finalName>
+    <plugins>
+
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <dependencies>
+          <dependency>
+            <groupId>org.juzu</groupId>
+            <artifactId>juzu-builder</artifactId>
+            <version>${project.version}</version>
+          </dependency>
+        </dependencies>
+        <executions>
+          <execution>
+            <id>gatein</id>
+            <goals>
+              <goal>single</goal>
+            </goals>
+            <phase>package</phase>
+            <configuration>
+              <classifier>gatein</classifier>
+              <descriptorRefs>
+                <descriptorRef>gatein</descriptorRef>
+              </descriptorRefs>
+            </configuration>
+          </execution>
+          <execution>
+            <id>liferay</id>
+            <goals>
+              <goal>single</goal>
+            </goals>
+            <phase>package</phase>
+            <configuration>
+              <classifier>liferay</classifier>
+              <descriptorRefs>
+                <descriptorRef>liferay</descriptorRef>
+              </descriptorRefs>
+            </configuration>
+          </execution>
+        </executions>
+
+      </plugin>
+
+    </plugins>
+  </build>
+
+</project>

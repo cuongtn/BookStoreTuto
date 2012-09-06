@@ -1,0 +1,5 @@
+Portlet 2
+---------------------------------------------------------------------------------------------------
+<br>
+The weather temperature in ${location} is ${temperature} degrees.
+<br><br>
