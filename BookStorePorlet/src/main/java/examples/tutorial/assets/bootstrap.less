@@ -7,6 +7,86 @@
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
+.popbox {
+  margin:0px auto;
+  text-align:center;
+  position:relative;
+}
+
+  .collapse { position:relative; }
+
+  .open {
+    background:#DDD;
+    border:solid 1px #FFF;
+    border-radius:5px;
+    box-shadow: 0px 0px 5px #CCC;
+    background:-webkit-gradient(linear,left top,left bottom,from(#f4f4f4),to(#e8e8e8));
+    background:-moz-linear-gradient(top,#f4f4f4,#e8e8e8);
+    background:linear-gradient(top,#f4f4f4,#e8e8e8);
+    padding:8px;
+  }
+
+    .box {
+      display:block;
+      display:none;
+      background:#FFF;
+      border:solid 1px #BBBBBB;
+      border-radius:5px;
+      box-shadow:0px 0px 15px #999;
+      position:absolute;
+    }
+
+      .box a.close {
+       color:red;
+       font-size:12px;
+       font-family:arial;
+       text-decoration:underline;
+      }
+
+      .arrow {
+      	width: 0;
+      	height: 0;
+      	border-left: 11px solid transparent;
+      	border-right: 11px solid transparent;
+      	border-bottom: 11px solid #FFF;
+      	position:absolute;
+      	left:1px;
+      	top:-10px;
+      	z-index:1001;
+      }
+
+      .arrow-border {
+      	width: 0;
+      	height: 0;
+      	border-left: 11px solid transparent;
+      	border-right: 11px solid transparent;
+      	border-bottom: 11px solid #BBBBBB;
+      	position:absolute;
+      	top:-12px;
+      	z-index:1000;
+      }
+
+body {
+	 font-family: Arial, Verdana, sans-serif;
+	 color: #111111;}
+table {
+	 width: 600px;}
+th, td {
+	 padding: 7px 10px 10px 10px;}
+th {
+	 text-transform: uppercase;
+	 letter-spacing: 0.1em;
+	 font-size: 90%;
+	 border-bottom: 2px solid #111111;
+	 border-top: 1px solid #999;
+	 text-align: left;}
+tr.even {
+	 background-color: #efefef;}
+tr:hover {
+	 background-color: #c3e6e5;}
+.money {
+	 text-align: right;}
+
 
 // CSS Reset
 @import "reset.less";

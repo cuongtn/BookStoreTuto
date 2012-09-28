@@ -1,17 +1,19 @@
 package examples.tutorial.bookstore;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class Book {
   public enum CATEGORY {
     NOVEL, MANGA, COMICS, TECHNICAL, MATHS, HISTORY
   }
+  private static final AtomicInteger sequence = new AtomicInteger();
+  public final String id = "" + sequence.getAndIncrement();
   
-  private String id;
-  
-  private String name;
+  public String name;
 
-  private CATEGORY category;
+  public CATEGORY category;
 
-  private String content;
+  public String content;
   
   public Book() {
   }
@@ -30,9 +32,9 @@ public class Book {
     return id;
   }
 
-  public void setId(String id) {
+/*  public void setId(String id) {
     this.id = id;
-  }
+  }*/
 
   public String getName() {
     return name;

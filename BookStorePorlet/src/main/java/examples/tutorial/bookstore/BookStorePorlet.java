@@ -7,6 +7,7 @@ import java.util.Set;
 
 import javax.inject.Inject;
 import javax.jcr.RepositoryException;
+import javax.ws.rs.core.Response.Status;
 
 import org.exoplatform.container.ExoContainer;
 import org.exoplatform.container.ExoContainerContext;
@@ -18,6 +19,11 @@ import org.exoplatform.test.BookStoreService;
 import org.exoplatform.test.BookStoreServiceImpl;
 import org.exoplatform.test.SimpleService;
 import org.exoplatform.test.entity.Book;
+import org.exoplatform.test.exception.BookNotFoundException;
+import org.exoplatform.test.exception.DuplicateBookException;
+import org.exoplatform.test.utils.Utils;
+
+import examples.tutorial.bookstore.Book.CATEGORY;
 //import org.exoplatform.test.SimpleServiceImpl;
 //import org.exoplatform.test.BookStoreService;
 
@@ -29,14 +35,14 @@ import juzu.View;
 import juzu.template.Template;
 
 public class BookStorePorlet {
-	//static Set<Book> listBooks = new HashSet<Book>();
-	/*static Book book1= new Book("Doraemon",CATEGORY.COMICS, "truyen tranh doraemon Nhat Ban");
+	/*static Set<Book> listBooks = new HashSet<Book>();
+	static Book book1= new Book("Doraemon",CATEGORY.COMICS, "truyen tranh doraemon Nhat Ban");
 	static Book book2= new Book("Dragon Balls",CATEGORY.COMICS, "truyen tranh 7 vien ngoc rong Nhat Ban");
 	static{
 		listBooks.add(book1);
 		listBooks.add(book2);
 	}*/
-	Collection<Book> listBooks;
+	Collection<org.exoplatform.test.entity.Book> listBooks;
 	
 	@Inject
 	@Path("index.gtmpl")
@@ -59,4 +65,62 @@ public class BookStorePorlet {
 		  listBooks(listBooks).
 		  render();
 	}
+	
+	@Action 
+	public Response addBook(String name, String category, String content) {
+		org.exoplatform.test.entity.Book.CATEGORY categoryEnum = null;
+	    try {
+	      categoryEnum = Utils.bookCategoryStringToEnum(category);
+	    } catch (IllegalArgumentException ex) {
+	      //return Response.status(Status.BAD_REQUEST).build();
+	    }
+	    
+		try {
+			Book bk = iservice.addBook(name, categoryEnum, content);
+		} catch (DuplicateBookException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return BookStorePorlet_.index();
+		}
+
+	@Action
+	public Response deleteBook(String id){
+			System.out.println("test==============" + id);
+		try {
+			iservice.deleteBook(id);
+		} catch (BookNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return BookStorePorlet_.index();
+		}
+	@Action
+	public Response modifyBook(String id, String name, String category, String content ){
+		Book bk = iservice.getBook(id);
+		System.out.println(bk.getName());
+		System.out.println(bk.getId());
+		System.out.println(name);
+		org.exoplatform.test.entity.Book.CATEGORY categoryEnum = null;
+	    try {
+	      categoryEnum = Utils.bookCategoryStringToEnum(category);
+	    } catch (IllegalArgumentException ex) {
+	      //return Response.status(Status.BAD_REQUEST).build();
+	    }
+	    bk.setName(name);
+	    bk.setCategory(categoryEnum);
+	    bk.setContent(content);
+	    try {
+			iservice.editBook(bk);
+		} catch (BookNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return BookStorePorlet_.index();
+		}
+	
+	
+	
+	
 }

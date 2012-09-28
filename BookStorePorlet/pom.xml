@@ -12,7 +12,7 @@
   <artifactId>BookStorePorlet</artifactId>
   <version>0.5.1</version>
 
-  <name>Juzu Tutorial Examples</name>
+  <name>Book Store Porlet</name>
   <description>Various tutorial examples</description>
 
   <dependencies>
@@ -87,7 +87,7 @@
   </dependencies>
 
   <build>
-    <finalName>juzu-booking</finalName>
+    <finalName>bookStore</finalName>
     <plugins>
 
       <plugin>

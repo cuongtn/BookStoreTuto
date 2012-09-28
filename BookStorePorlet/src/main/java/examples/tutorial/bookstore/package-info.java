@@ -26,11 +26,15 @@
 @Assets(
 		scripts = {
 			    @Script(id = "jquery", src = "jquery-1.7.1.min.js", location = AssetLocation.CLASSPATH),
-			    @Script(src = "bookstore.js", location = AssetLocation.CLASSPATH, depends = "jquery")
-			  },
-		stylesheets = @Stylesheet(src = "/examples/tutorial/assets/bootstrap.css", location = AssetLocation.CLASSPATH))
-
-package examples.tutorial.bookstore;
+			    @Script(id = "jquery-ui", src = "jquery-ui-1.8.23.custom.min.js", location = AssetLocation.CLASSPATH, depends = "jquery"),
+			    @Script(src = "jquery.jtable.js", location = AssetLocation.CLASSPATH, depends = "jquery-ui"),
+			    @Script(src = "bookstore.js", location = AssetLocation.CLASSPATH, depends = "jquery"),
+			    @Script(src = "jquery.tools.min.js", location = AssetLocation.CLASSPATH, depends = "jquery"),
+			    @Script(src = "/bookStore-gatein/javascripts/popbox.js", depends = "jquery"),
+			    @Script(src = "/bookStore-gatein/javascripts/popbox.min.js", depends = "jquery")
+		},
+		stylesheets = @Stylesheet(src = "/examples/tutorial/assets/bootstrap.css", location = AssetLocation.CLASSPATH)
+		)package examples.tutorial.bookstore;
 
 import juzu.Application;
 import juzu.plugin.portlet.Portlet;

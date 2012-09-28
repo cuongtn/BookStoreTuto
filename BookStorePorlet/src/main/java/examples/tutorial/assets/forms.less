@@ -1,4 +1,6 @@
-.tutorial {
+
+
+
 
 // Forms.less
 // Base styles for various input types, form layouts, and states
@@ -7,6 +9,54 @@
 
 // GENERAL STYLES
 // --------------
+
+/* Z-index of #mask must lower than #boxes .window */
+#mask {
+  position:absolute;
+  z-index:9000;
+  background-color:#000;
+  display:none;
+  top:0px;
+  left:0px;
+  right:0px;
+}
+   
+#boxes .window {
+  position:fixed;
+  width:440px;
+  height:200px;
+  display:none;
+  z-index:9999;
+  padding:20px;
+}
+ 
+ 
+/* Customize your modal window here, you can add background image too */
+#boxes #dialog {
+  width:375px;
+  height:203px;
+  background:white;
+}
+
+.myform{
+	position: absolute;
+	border: 5px solid white;
+	padding: 10px;
+	background: white;
+	width: 270px;
+	height: 350px;
+}
+
+#pop{
+display: block;
+border: 1px solid gray;
+width: 65px;
+text-align: center;
+padding: 6px;
+border-radius: 5px;
+text-decoration: none;
+margin: 0 auto;
+}
 
 .popup{
 	position: absolute;
@@ -604,4 +654,4 @@ legend + .control-group {
   }
 }
 
-}
+
