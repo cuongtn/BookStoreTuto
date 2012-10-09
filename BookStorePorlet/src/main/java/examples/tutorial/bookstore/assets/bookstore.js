@@ -1,82 +1,83 @@
 
 $(document).ready(function(){
 	
-	$('a[name=modal]').click(function(e) {
-		alert("hello");
-		alert(${book.name});
-	});
-	
-	
-	
-	/*//select all the a tag with name equal to modal
-    $('a[name=modal]').click(function(e) {
-    //Cancel the link behavior
-    e.preventDefault();
-    //Get the A tag
-    //var id = $(this).attr('href');
-    //alert(id);
-    //Get the screen height and width
-    document.getElementById('boxes').appendChild(divElement);
-	var maskHeight = $(window).height();
-	var maskWidth = $(window).width();
-	 
-	//Set height and width to mask to fill up the whole screen
-	$('#mask').css({'width':maskWidth,'height':maskHeight});
-	     
-	//transition effect    
-	$('#mask').fadeIn(1000);   
-	$('#mask').fadeTo("slow",0.8); 
-	 
-	//Get the window height and width
-	var winH = $(window).height();
-	var winW = $(window).width();
- 
-    //transition effect
-    //$(id).fadeIn(2000);
-    });
-    //if close button is clicked
-    $('.window .close').click(function (e) {
-        //Cancel the link behavior
-        e.preventDefault();
-        $('#mask, .window').hide();
-    });    
-     
-    //if mask is clicked
-    $('#mask').click(function () {
-        $(this).hide();
-        $('.window').hide();
-    }); 
-	*/
 //open popup
-$(".ajoutbook .btn").click(function(){
+$("#btn1").click(function(){
 	$("#myform1").fadeIn(1000);
 	positionPopup();
+	document.getElementById("overlay").style.display = "block";
 });
-
-$('a[name=modal2]').click(function(){
-	$("myform2").fadeIn(1000);
-	positionPopup();
-});
-
-
 //close popup
-$(".popup .close").click(function(){
+$(".popup #close").click(function(){
 $("#myform1").fadeOut(500);
+document.getElementById("overlay").style.display = "none";
 });
+
+$("#close2").live("click", function(){
+	$("#content").fadeOut(1000);
+	document.getElementById("overlay").style.display = "none";
+});
+
+// Search function
+var search = function(elt) {
+  var root = $(elt).jz();
+  root.find(".result").jzLoad("Hotels.list()", {
+    search : $(elt).jzFind(".search").val(),
+    size : $(elt).jzFind(".size").val(),
+    page : $(elt).jzFind(".page").val()
+  }, function() {
+    // does not seem used
+    // $('#content').css('visibility', 'visible');
+  });
+};
+// Events handler
+$("body").on("click", ".jz .submit", function() {
+  $(this).jzFind('.page').val(0);
+  search(this);
+});
+$("body").on("keyup", ".jz .search", function() {
+  $(this).jzFind('.page').val(0);
+  search(this);
+});
+$("body").on("click", ".jz .nextPage", function(e) {
+  var p = $(this).attr('href');
+  $(this).jzFind('.page').val(p);
+  e.preventDefault();
+  search(this);
+});
+
+
 
 });
 
 //position the popup at the center of the page
 function positionPopup(){
-if(!$(".myform").is(':visible')){
+if(!$(".popup").is(':visible')){
 return;
 }
-$(".myform").css({
-left: ($(window).width() - $('.myform').width()) / 4,
-top: ($(window).width() - $('.myform').width()) / 15,
+$(".popup").css({
+left: ($(window).width() - $('.popup').width()) / 3,
+top: ($(window).width() - $('.popup').width()) / 15,
 position:'absolute'
 });
 }
+
+function showContent(name,content){
+	var divElement = document.createElement("div");
+	divElement.setAttribute("class","content");
+	divElement.innerHTML = "<h1><Strong>" + name +"</Strong></h1>"+"</br>"+content + "</br><button class='button' id='close2'>close</button>";
+	document.getElementById('content').appendChild(divElement);
+	$("#content").fadeIn(1000);
+	positionPopup();
+	document.getElementById("overlay").style.display = "block";
+}
+function editBook(id){
+	alert("id");
+}
+
+
+
+
  
 //maintain the popup at center of the page when browser resized
 $(window).bind('resize',positionPopup);
@@ -88,9 +89,11 @@ function confirmDelete(){
 	else
 	     return false ;
 	}
-function closePopup(){
-	$(".myform").fadeOut(500);
-}
+/*function closePopup(){
+	alert('he');
+	$(".popup").fadeOut(1000);
+	
+}*/
 
 
 /*function CreateDivElement(content) { 
@@ -107,9 +110,6 @@ function closePopup(){
 	$("#dialog").fadeIn(1000);
 	
 	}  */
-function openContent(){
-	$("#dialog").fadeOut(500);
-}
 
 function CreateFormElement(id,name,category,content){
 	var form = document.createElement("form"); 

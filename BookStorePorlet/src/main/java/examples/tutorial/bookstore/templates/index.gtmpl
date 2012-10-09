@@ -1,25 +1,42 @@
 #{param name=listBooks/}
-
+#{title value='Search'/}
 <h1>Search Books</h1>
+<p>
+    <input type="text" class="search" size="30">
+    <input type="submit" class="submit" value="Find Books">
+    <input type="hidden" class="page" value="0">
+    <br>
+	
+    Maximum results: 
+    <select class="size">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+    </select>
+</p>
+<div class="result">
+</div>
+
 
 <table border="1" cellspacing="3">
+<caption>list of books in the store</caption>
 	<thead>
 		<tr>
-	   		<th>Id</th>
-       			<th>Name</th>
-       			<th>Category</th>
-       			<th>Action</th>
+	   		<!--<th scope="col">Id</th>-->
+       		<th scope="col">Name</th>
+       		<th scope="col">Category</th>
+       		<th scope="col">Action</th>
    		</tr>
    	</thead>
    	<tbody>
 	<%listBooks.each(){ book->%>
    		<tr>
-   	   		<td>${book.id}</td>
-       		<td>${book.name}</td>
+   	   		<!--<td>${book.id}</td>-->
+       		<td >${book.name}</td>
        		<td>${book.category.toString()}</td>
        		<td>
-			<a href="#" ><img border="0" src="/bookStore-gatein/penciledit.jpeg"  width="14" height="14" /></a>
-	   		<a href="#" name="modal"><img border="0" src="/bookStore-gatein/eye.png"  width="14" height="14" /></a>
+			<a href="#" onClick="editBook('${book.id}')" ><img border="0" src="/bookStore-gatein/penciledit.jpeg"  width="14" height="14" /></a>
+	   		<a href="#" name="modal" onClick="showContent('${book.name}','${book.content}')"><img border="0" src="/bookStore-gatein/eye.png"  width="14" height="14" /></a>
        		<a href="@{deleteBook(id = book.id)}" onClick="return confirm('Are you sure you want to delete this book?')"><img border="0" src="/bookStore-gatein/delete.png"  width="14" height="14" /></a>
        		</td>
    		</tr>
@@ -28,9 +45,10 @@
 </table>
 
 <div class="ajoutbook">
-	<button class="btn">Add new book</button>
-	<div class="popup">
-	<form id="myform1" action="@{addBook()}" method="post" style="display:none" name="myform1">
+	<button id ="btn1" class="btn">Add new book</button>
+	<!--<div class="popup" id="popup1" style="display:none">-->
+	
+	<form id="myform1" class="popup" style="display:none" action="@{addBook()}" method="post">
 			<fieldset>
 				<p><a href="#" id="close"/>x</a></p>
            		<p>
@@ -50,18 +68,18 @@
         		</p>
         		<p>
             	<strong>Content: <br/></strong> 
-            		<textarea cols="20" rows="5" name="content">
-            		Sample Content...
-					</textarea>
+            		<textarea cols="20" rows="5" name="content">Sample Content...</textarea>
         		</p>
 				<button type="submit" class="btn">Add</button>        		
 				<button type="reset" class="btn">Reset</button> 
              </fieldset>
-		</form>
-		</div>
-	</div>		
-	<div id="boxes">
-    			<!-- Do not remove div#mask, because you'll need it to fill the whole screen --> 
-    			<div id="mask"></div>
+	</form>
 	</div>
+	
+<div id="overlay" class="overlay">
+</div>	
+<div id="content" class="popup">
+
+</div>
+
 
